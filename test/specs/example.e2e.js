@@ -2,12 +2,11 @@ import HomePage from '../pageobjects/home.page';
 import SearchResultsPage from '../pageobjects/searchResults.page';
 import Utils from '../pageobjects/utils';
 import testData from '../testData.json';
+import ApiRequestsPage from '../pageobjects/apiRequests.page';
 
 describe('DuckDuckGo search', () => {
-    let homepage = new HomePage();
 
-
-    it.skip('should display a picture of Michael Jordan', async () => {
+    it('should display a picture of Michael Jordan', async () => {
         let homepage = new HomePage();
         let searchResultsPage = new SearchResultsPage();
         await homepage.open();
@@ -18,7 +17,7 @@ describe('DuckDuckGo search', () => {
         await expect(result).toBe.true;
     });
 
-    it.skip('should be at least one Wikipedia page result', async () => {
+    it('should be at least one Wikipedia page result', async () => {
         let homepage = new HomePage();
         let searchResultsPage = new SearchResultsPage();
         await homepage.open();
@@ -27,7 +26,7 @@ describe('DuckDuckGo search', () => {
         expect(result).toBe(true);
     });
 
-    it.skip('should be at least one NBA page result', async () => {
+    it('should be at least one NBA page result', async () => {
         let homepage = new HomePage();
         let searchResultsPage = new SearchResultsPage();
         await homepage.open();
@@ -36,7 +35,7 @@ describe('DuckDuckGo search', () => {
         expect(results).toBe(true);
     });
 
-    it.skip('should be able to change background color', async () => {
+    it.skip('should be able to change background color', async () => { //TODO: Not finished
         let homepage = new HomePage();
         let utils = new Utils();
         await homepage.open();
@@ -50,10 +49,13 @@ describe('DuckDuckGo search', () => {
         expect(backgroundAfter).toEqual(testData.finalColor);
     });
 
-    it('should be able to retrieve API response', async () => {
-        let homepage = new HomePage();
-        let response = await homepage.apiResultVerification();
-
+    it('should be able to retrieve a list of all images retrieved from API response', async () => {
+        let apiRequestsPage = new ApiRequestsPage();
+        let response = await apiRequestsPage.apiDogsResultSaveFile(
+            testData.apiRequests.dogs.endpoint,
+            testData.apiRequests.dogs.level_0
+        );
+        console.log('LIST OF IMAGES: ' + response);
     });
 });
 

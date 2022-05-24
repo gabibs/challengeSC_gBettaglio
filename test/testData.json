@@ -1,7 +1,14 @@
 {
+    "url": "https: //duckduckgo.com/",
     "searchValue1": "Michael Jordan",
     "wikipedia": "Michael Jordan - Wikipedia",
     "NBA": "Michael Jordan | Chicago Bulls | NBA.com",
     "initialColor": "#f7f7f7",
-    "finalColor": "#222222"
+    "finalColor": "#222222",
+    "apiRequests": {
+        "dogs": {
+            "endpoint": "https://api.duckduckgo.com/?q=dogs&format=json&pretty=1",
+            "level_0": "RelatedTopics"
+        }
+    }
 }

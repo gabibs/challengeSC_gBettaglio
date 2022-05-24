@@ -1,5 +1,7 @@
 import { default as Page } from "../pageobjects/page.js";
-import ApiRequests, { default as apiRequests } from "../pageobjects/apiRequests.page.js"
+import ApiRequests, { default as apiRequests } from "../pageobjects/apiRequests.page.js";
+var _ = require('underscore');
+var fs = require('fs');
 
 
 /**
@@ -47,21 +49,12 @@ class HomePage extends Page {
         await this.btnSearch.click();
     }
 
-    async getBackgroundColor() {
+    async getBackgroundColor() { //TODO: Fix this
         await browser.pause(30000);
         let color = await this.homePageBody.getCSSProperty('background-color')
         let bckgColor = color["parsed"]["hex"];
         console.log('bckgColor: ' + bckgColor);
         return bckgColor;
-    }
-
-    async apiResultVerification() {
-        let apiRequests = new ApiRequests();
-        let response = await apiRequests.httpGetAsync('https://api.duckduckgo.com/?q=dogs&format=json&pretty=1');
-        console.log('RESPONSE: ' + response);
-
-
-
     }
 
 }

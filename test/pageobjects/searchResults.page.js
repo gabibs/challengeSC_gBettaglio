@@ -1,4 +1,5 @@
 import { default as Page } from './page.js';
+import testData from '../testData.json'
 
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -56,7 +57,7 @@ class SearchResultsPage extends Page {
     }
 
     async open() {
-        await super.open('https://duckduckgo.com/');
+        await super.open(testData.url);
         await browser.maximizeWindow();
     }
 

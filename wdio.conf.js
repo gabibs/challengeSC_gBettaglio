@@ -120,8 +120,7 @@ exports.config = {
             logFileName: 'wdio-chromedriver.log', // default
             outputDir: 'driver-logs', // overwrites the config.outputDir
             args: ['--silent']
-        }],
-        'intercept'
+        }]
     ],
 
     // Framework you want to run your specs with.
